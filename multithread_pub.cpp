@@ -2,8 +2,8 @@
 #include <iostream>
 #include <string>
 
-#include "/Users/shabana/Documents/Waterloop_FW_Main/Elesa/cppzmq/zmq.hpp"
-#include "/Users/shabana/Documents/Waterloop_FW_Main/Elesa/cppzmq/zmq_addon.hpp"
+#include "../Elesa/cppzmq/zmq.hpp"
+#include "../Elesa/cppzmq/zmq_addon.hpp"
 
 int main() {
     zmq::context_t ctx(1);
