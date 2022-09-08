@@ -2,8 +2,8 @@
 #include <iostream>
 #include <string>
 
-#include "../Elesa/cppzmq/zmq.hpp"
-#include "../Elesa/cppzmq/zmq_addon.hpp"
+#include "../cppzmq/zmq.hpp"
+#include "../cppzmq/zmq_addon.hpp"
 
 int main() {
     zmq::context_t ctx(1);
