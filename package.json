@@ -1,0 +1,22 @@
+{
+  "name": "firmware-elesa",
+  "version": "1.0.0",
+  "description": "G6 Dashboard",
+  "main": "Frontend/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waterloop/firmware-elesa.git"
+  },
+  "author": "Waterloop",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waterloop/firmware-elesa/issues"
+  },
+  "homepage": "https://github.com/waterloop/firmware-elesa#readme",
+  "devDependencies": {
+    "electron": "^21.1.0"
+  }
+}
