@@ -6,8 +6,8 @@ const isDev = !app.isPackaged;
 // Create the main window
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 2800,
+    height: 1600,
     backgroundColor: "white",
     webPreferences: {
       nodeIntegration: false,
@@ -18,6 +18,7 @@ const createWindow = () => {
   })
 
   win.loadFile(path.resolve(__dirname, 'index.html'));
+  win.webContents.openDevTools()
 }
 
 if (isDev) {

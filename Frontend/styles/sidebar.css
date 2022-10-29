@@ -1,0 +1,24 @@
+@import url('./styles/theme.css');
+
+/* SIDE BAR */
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  width: 460px;
+  height: 100vh;
+  background-color: var(--dark_blue);
+}
+
+.sidebar-options{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 24px;
+  justify-content: start;
+  padding: 20px 30px;
+  width: 400px;
+  height: 90px;
+  background-color: var(--dark_blue);
+}

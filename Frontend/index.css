@@ -1,0 +1,21 @@
+@import url('./styles/theme.css');
+@import url('./styles/sidebar.css');
+
+body {
+  background-color: #31325D;
+  color: var(--white);
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  font-family: var(--standard_font);
+}
+
+.main{
+  margin: 40px 75px;
+}
+
+.header{
+  font-size: 47px;
+  color: var(--white);
+}
