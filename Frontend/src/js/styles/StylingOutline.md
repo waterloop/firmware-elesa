@@ -20,4 +20,4 @@
 
 **Button examples:**
 
-![Button Image](../../../../img/miscellaneous/ButtonImages.png?raw=true)
+![Button Image](https://github.com/waterloop/firmware-elesa/tree/main/img/miscellaneous/ButtonImages.png)
