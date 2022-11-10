@@ -31,6 +31,8 @@ module.exports = {
           // Translates CSS into CommonJS
           'css-loader',
         ],
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       }
     ]
   },
@@ -42,3 +44,4 @@ module.exports = {
     path: path.resolve(__dirname, 'build', 'js'),
   },
 };
+
