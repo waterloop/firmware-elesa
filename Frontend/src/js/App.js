@@ -4,6 +4,9 @@ import Operations from './pages/Operations/Operations';
 import Connections from './pages/Connections/Connections';
 import RemoteFlashing from './pages/RemoteFlashing/RemoteFlashing';
 import { ThemeProvider } from 'styled-components';
+import OperationIcon from '../../../img/svg/icons/icon_operations_sidebar.svg';
+import ConnectionIcon from '../../../img/svg/icons/icon_connections_sidebar.svg';
+import RemoteFlashingIcon from '../../../img/svg/icons/icon_remote_flashing_sidebar.svg';
 import theme from './styles/theme';
   import {
 	BrowserRouter as Router,
@@ -45,6 +48,7 @@ const StyledLink = styled(Link)`
     text-decoration: none;
     color: ${({ theme }) => theme.colours.white};
     background-color: ${({ theme }) => theme.colours.blues.dark_blue};
+    p {margin-left: 20px;}
 `;
 
 export default function App() {
@@ -53,9 +57,10 @@ export default function App() {
             <Router>
                 <Container>
                     <Column>
-                        <StyledLink to="/">Operations</StyledLink>
-                        <StyledLink to="/remtoeFlashing"> Remtoe Flashing</StyledLink>
-                        <StyledLink to="/connections">Connections</StyledLink>
+                        <StyledLink to="/"> <OperationIcon /> <p> Operations </p> </StyledLink>
+                        <StyledLink to="/remtoeFlashing"> <ConnectionIcon /> <p> Remtoe Flashing </p> </StyledLink>
+                        <StyledLink to="/connections"> <RemoteFlashingIcon />  <p> Connections </p> </StyledLink>
+                        
                     </Column>
                     <Routes>
                         <Route path='*' element={<Operations />}> </Route>
