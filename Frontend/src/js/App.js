@@ -58,7 +58,7 @@ export default function App() {
                 <Container>
                     <Column>
                         <StyledLink to="/"> <OperationIcon /> <p> Operations </p> </StyledLink>
-                        <StyledLink to="/remtoeFlashing"> <ConnectionIcon /> <p> Remtoe Flashing </p> </StyledLink>
+                        <StyledLink to="/remtoeFlashing"> <ConnectionIcon /> <p> Remote Flashing </p> </StyledLink>
                         <StyledLink to="/connections"> <RemoteFlashingIcon />  <p> Connections </p> </StyledLink>
                         
                     </Column>
