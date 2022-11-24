@@ -17,22 +17,23 @@ import theme from './styles/theme';
 
 const Container = styled.div`
     background-color: ${({ theme }) => theme.colours.blues.medium_blue};
-    color: white;
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-    padding: 0;
     height: 100vh;
-    font-family: ${({ theme }) => theme.font}
+    color: white;
+    display:grid;
+    grid-template-columns: 25% 75%;
+    grid-column-gap: 0px;
+    font-family: ${({ theme }) => theme.font};
+    @media (max-width: 900px) {
+        grid-template-columns: 20% 80%;
+      }
 `;
 
 const Column = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px;
-  width: 460px;
-  height: 100vh;
+  padding: 0 0 10px 0;
+  height: 100%;
   background-color: ${({ theme }) => theme.colours.blues.dark_blue};
 `;
 
@@ -43,12 +44,14 @@ const StyledLink = styled(Link)`
     font-size: 24px;
     justify-content: start;
     padding: 20px 30px;
-    width: 400px;
     height: 90px;
     text-decoration: none;
     color: ${({ theme }) => theme.colours.white};
     background-color: ${({ theme }) => theme.colours.blues.dark_blue};
     p {margin-left: 20px;}
+    @media (max-width: 900px) {
+        font-size: 0px;
+      }
 `;
 
 export default function App() {
