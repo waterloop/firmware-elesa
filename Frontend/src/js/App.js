@@ -16,7 +16,7 @@ import theme from './styles/theme';
 } from 'react-router-dom';
 
 const Container = styled.div`
-    background-color: ${({ theme }) => theme.colours.blues.medium_blue};
+    background-color: ${({ theme }) => theme.colours.blues.light_blue};
     color: white;
     display: flex;
     flex-direction: row;
