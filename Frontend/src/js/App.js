@@ -14,6 +14,8 @@ import theme from './styles/theme';
 	Route,
 	Link
 } from 'react-router-dom';
+import { ModalProvider } from 'styled-react-modal';
+
 
 const Container = styled.div`
     background-color: ${({ theme }) => theme.colours.blues.medium_blue};
@@ -54,21 +56,23 @@ const StyledLink = styled(Link)`
 export default function App() {
     return (
         <ThemeProvider theme={theme}>
-            <Router>
-                <Container>
-                    <Column>
-                        <StyledLink to="/"> <OperationIcon /> <p> Operations </p> </StyledLink>
-                        <StyledLink to="/remtoeFlashing"> <ConnectionIcon /> <p> Remote Flashing </p> </StyledLink>
-                        <StyledLink to="/connections"> <RemoteFlashingIcon />  <p> Connections </p> </StyledLink>
-                        
-                    </Column>
-                    <Routes>
-                        <Route path='*' element={<Operations />}> </Route>
-                        <Route path='/connections' element={<Connections />}> </Route>
-                        <Route path='/remtoeFlashing' element={<RemoteFlashing />}> </Route>
-                    </Routes>
-                </Container>
-            </Router>
+            <ModalProvider>
+                <Router>
+                    <Container>
+                        <Column>
+                            <StyledLink to="/"> <OperationIcon /> <p> Operations </p> </StyledLink>
+                            <StyledLink to="/remtoeFlashing"> <ConnectionIcon /> <p> Remote Flashing </p> </StyledLink>
+                            <StyledLink to="/connections"> <RemoteFlashingIcon />  <p> Connections </p> </StyledLink>
+                            
+                        </Column>
+                        <Routes>
+                            <Route path='*' element={<Operations />}> </Route>
+                            <Route path='/connections' element={<Connections />}> </Route>
+                            <Route path='/remtoeFlashing' element={<RemoteFlashing />}> </Route>
+                        </Routes>
+                    </Container>
+                </Router>
+            </ModalProvider>
         </ThemeProvider>
     )
 }

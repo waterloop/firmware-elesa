@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import { ButtonDarkGrey, ButtonYellow } from '../../components/Buttons';
+import { ButtonDarkGrey, ButtonLightGrey, ButtonYellow } from '../../components/Buttons';
 import { ProgressBar, ProgressBarLogo } from '../../components/ProgressBar';
 import ScrollBar from '../../components/ScrollBar';
+import Modal from 'styled-react-modal'
+import ExitIcon from '../../../../../img/svg/exit.svg';
 
 const ConnectionsContainer = styled.div`
   display: flex;
@@ -49,6 +51,30 @@ const ConnectionCardContainer = styled.div`
   margin-bottom: 1rem;
   justify-content: space-between;
 `
+
+const ConnectionModal = Modal.styled`
+  font-family: ${({ theme }) => theme.font};
+  color: ${({ theme }) => theme.colours.white};
+  background-color: ${({ theme }) => theme.colours.blues.dark_blue};
+  border-radius: 5px;
+  padding: 25px 10px 50px 50px;
+  display: flex;
+  align-items: start;
+`;
+
+const ConnectionModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+`
+
+const ConnectionModalInputGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  align-items: center;
+  margin-right: 125px;
+`
 const ConnectionCard = ({ connectionName, ipAddress}) => {
   return (
     <ConnectionCardContainer>
@@ -68,6 +94,12 @@ const ConnectionCard = ({ connectionName, ipAddress}) => {
 };
 
 export default function Connections() {
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const toggleModal = (e) => {
+    setIsOpen(!modalIsOpen);
+  }
+
   const [connections, setConnections] = useState([
     { connectionName: "Test1", ipAddress: "123.456.678"},
     { connectionName: "Test2", ipAddress: "123.456.673"},
@@ -83,7 +115,7 @@ export default function Connections() {
       <HeadingContainer>
         <h1>Connections</h1>
         <HeadingButtonContainer>
-          <ButtonDarkGrey>CONNECT NEW DEVICE</ButtonDarkGrey>
+          <ButtonDarkGrey width="auto" onClick={toggleModal}>CONNECT NEW DEVICE</ButtonDarkGrey>
         </HeadingButtonContainer>
       </HeadingContainer>
       <ConnectionsList>
@@ -94,6 +126,36 @@ export default function Connections() {
       <ProgressBar style={{marginRight: "80px"}}>
         <ProgressBarLogo />
       </ProgressBar>
+
+
+      <ConnectionModal
+        isOpen={modalIsOpen} 
+        onBackgroundClick={toggleModal}
+      >
+        <ConnectionModalContainer>
+          <div style={{display: "flex", alignItems: "center", marginBottom: "1.5rem"}}>
+            <h2 style={{ margin: "0px" , fontSize: "2rem"}}>Connect New Device</h2>
+            <div onClick={toggleModal} style={{marginLeft: "50px", marginTop: "0px", width: "75px", height: "75px", backgroundColor: "transparent" }}>
+              <ExitIcon style={{color: "white"}}></ExitIcon>
+            </div>
+          </div>
+          <form>
+            <ConnectionModalInputGroup>
+              <p style={{marginRight: "1rem"}}>
+                IP Address
+              </p>
+              <input></input>
+            </ConnectionModalInputGroup>
+            <ConnectionModalInputGroup>
+              <p style={{marginRight: "1rem"}}>
+                Port Number
+              </p>
+              <input></input>
+            </ConnectionModalInputGroup>
+          </form>
+          <ButtonLightGrey width="auto">CONNECT</ButtonLightGrey>
+        </ConnectionModalContainer>
+      </ConnectionModal>
     </ConnectionsContainer>
   );
 }
