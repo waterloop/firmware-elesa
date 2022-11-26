@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import { ButtonDarkGrey, ButtonYellow } from '../../components/Buttons';
 import { ProgressBar, ProgressBarLogo } from '../../components/ProgressBar';
+import ScrollBar from '../../components/ScrollBar';
 
 const ConnectionsContainer = styled.div`
   display: flex;
@@ -11,6 +12,8 @@ const ConnectionsContainer = styled.div`
   padding-right: 80px;
   font-size: 1.25rem;
   padding-bottom: 100px;
+  justify-content: stretch;
+  align-items: stretch;
 `
 const HeadingContainer = styled.div`
   display: flex;
@@ -18,14 +21,14 @@ const HeadingContainer = styled.div`
   align-items: center;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  width: 100%;
+  padding-right: 80px;
 `;
 
 const HeadingButtonContainer = styled.div`
   margin-left: auto;
 `;
 
-const ConnectionsList = styled.div`
+const ConnectionsList = styled(ScrollBar)`
   padding-right: 50px;
   overflow-y: scroll;
   margin-bottom: 50px;
@@ -88,11 +91,9 @@ export default function Connections() {
           <ConnectionCard key={connection.ipAddress} {...connection} />
         ))}
       </ConnectionsList>
-      <div>
-        <ProgressBar>
-          <ProgressBarLogo />
-        </ProgressBar>
-      </div>
+      <ProgressBar style={{marginRight: "80px"}}>
+        <ProgressBarLogo />
+      </ProgressBar>
     </ConnectionsContainer>
   );
 }
