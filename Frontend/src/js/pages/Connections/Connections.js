@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import { ButtonDarkGrey, ButtonYellow } from '../../components/Buttons';
+import { ProgressBar, ProgressBarLogo } from '../../components/ProgressBar';
+
 const ConnectionsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,6 +10,7 @@ const ConnectionsContainer = styled.div`
   width: 100%;
   padding-right: 80px;
   font-size: 1.25rem;
+  padding-bottom: 100px;
 `
 const HeadingContainer = styled.div`
   display: flex;
@@ -25,14 +28,14 @@ const HeadingButtonContainer = styled.div`
 const ConnectionsList = styled.div`
   padding-right: 50px;
   overflow-y: scroll;
+  margin-bottom: 50px;
 
 `
 
 const ConnectionCardColumn = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
-  justify-content: space-around;
+  justify-content: space-between;
 `
 
 const ConnectionCardContainer = styled.div`
@@ -41,6 +44,7 @@ const ConnectionCardContainer = styled.div`
   background-color: ${({ theme }) => theme.colours.blues.dark_blue};
   border-radius: 5px;
   margin-bottom: 1rem;
+  justify-content: space-between;
 `
 const ConnectionCard = ({ connectionName, ipAddress}) => {
   return (
@@ -67,7 +71,9 @@ export default function Connections() {
     { connectionName: "Test1", ipAddress: "123.456.671"},
     { connectionName: "Test2", ipAddress: "123.456.672"},
     { connectionName: "Test1", ipAddress: "123.456.671"},
-    { connectionName: "Test2", ipAddress: "123.456.672"}]);
+    { connectionName: "Test2", ipAddress: "123.456.672"},
+    { connectionName: "Test1", ipAddress: "123.456.61"},
+    { connectionName: "Test2", ipAddress: "123.456.621"}]);
 
   return (
     <ConnectionsContainer>
@@ -82,6 +88,11 @@ export default function Connections() {
           <ConnectionCard key={connection.ipAddress} {...connection} />
         ))}
       </ConnectionsList>
+      <div>
+        <ProgressBar>
+          <ProgressBarLogo />
+        </ProgressBar>
+      </div>
     </ConnectionsContainer>
   );
 }
