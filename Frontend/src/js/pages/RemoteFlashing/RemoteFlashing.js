@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import { Oval } from 'react-loader-spinner'
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 import { ButtonYellow } from '../../components/Buttons'
@@ -80,6 +81,37 @@ const customStyles = {
   },
 };
 
+const ModalContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+`;
+
+const ModalHeader = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  right: 10;
+  top: 10;
+  position: absolute;
+`;
+
+const ModalBody = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const ModalTitle = styled.h3`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 56px;
+`
+
 export default function RemoteFlashing() {
   const [connectionStatus, setconnectionStatus] = useState({
     connected: 
@@ -128,8 +160,27 @@ export default function RemoteFlashing() {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <button onClick={finishedScanning}>close</button>
-          <div>I am a modal</div>
+          <ModalContent>
+            <ModalHeader>
+              <button onClick={finishedScanning}>close</button>
+            </ModalHeader>
+            <ModalBody>
+              <ModalTitle>Scanning...</ModalTitle>
+              <Oval
+                height={104}
+                width={104}
+                color="#ffffff"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel='oval-loading'
+                secondaryColor="#91939a"
+                strokeWidth={2}
+                strokeWidthSecondary={2}
+
+              />
+            </ModalBody>
+          </ModalContent>
         </Modal>
         <Content>
 
