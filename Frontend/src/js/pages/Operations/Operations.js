@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import StatisticBox from './StatisticBox';
-import StatusIconConnected from '../../../../../img/svg/icons/icon_status_bar_connected.svg';
-import StatusIconDisconnected from '../../../../../img/svg/icons/icon_status_bar_disconnected.svg';
-import ProgressBarLogo from '../../../../../img/svg/icons/icon_operations_progressbar.svg';
+import StatusIconConnected from '@img/svg/icons/icon_status_bar_connected.svg';
+import StatusIconDisconnected from '@img/svg/icons/icon_status_bar_disconnected.svg';
+import ProgressBarLogo from '@img/svg/icons/icon_operations_progressbar.svg';
 
 const Container = styled.div`
   display: flex;
