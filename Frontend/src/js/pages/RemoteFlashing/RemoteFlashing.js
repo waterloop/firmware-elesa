@@ -4,7 +4,8 @@ import { Oval } from 'react-loader-spinner'
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 import { ButtonYellow } from '../../components/Buttons'
-import StatisticBox from './StatisticBox';
+import StatisticBox from './StatisticBox'
+import ExitIconWhite from '../../../../../img/svg/exit_white.svg';
 import StatusIconConnected from '../../../../../img/svg/icons/icon_status_bar_connected.svg';
 import StatusIconDisconnected from '../../../../../img/svg/icons/icon_status_bar_disconnected.svg';
 import ProgressBarLogo from '../../../../../img/svg/icons/icon_operations_progressbar.svg';
@@ -92,8 +93,8 @@ const ModalContent = styled.div`
 const ModalHeader = styled.div`
   display: flex;
   justify-content: flex-end;
-  right: 10;
-  top: 10;
+  right: 20px;
+  top: 20px;
   position: absolute;
 `;
 
@@ -110,7 +111,59 @@ const ModalTitle = styled.h3`
   font-weight: 300;
   font-size: 48px;
   line-height: 56px;
+  color: ${({ theme }) => theme.colours.white};
 `
+
+const StatisticsSection = styled.div`
+  margin: 50px 0 0 0;
+  display:grid;
+  grid-template-columns: 35% 35%;
+  grid-row: auto auto;
+  grid-column-gap: 15%;
+  grid-row-gap: 62px;
+
+  @media (max-width: 1400px) {
+    grid-template-columns: 35% 35%;
+  }
+  @media (max-width: 700px) {
+    grid-template-columns: 80%;
+  }
+`;
+
+function CustomModal(props) {
+  return (
+    <Modal
+      isOpen={props.isOpen}
+      onAfterOpen={props.onAfterOpen}
+      onRequestClose={props.onRequestClose}
+      style={props.style}
+      contentLabel="Example Modal"
+    >
+      <ModalContent>
+        <ModalHeader>
+          <button onClick={props.onCancel} style={{backgroundColor:"transparent", border: "none", cursor: "pointer"}}>
+            <ExitIconWhite/>
+          </button>
+        </ModalHeader>
+        <ModalBody>
+          <ModalTitle>{props.title}</ModalTitle>
+          <Oval
+            height={104}
+            width={104}
+            color="#ffffff"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            ariaLabel='oval-loading'
+            secondaryColor="#91939a"
+            strokeWidth={2}
+            strokeWidthSecondary={2}
+          />
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  )
+}
 
 export default function RemoteFlashing() {
   const [connectionStatus, setconnectionStatus] = useState({
@@ -121,6 +174,7 @@ export default function RemoteFlashing() {
   });
 
   const [isScanning, setScanning] = React.useState(false);
+  const [devices, setDevices] = React.useState([]);
 
   function scanForDevices() {
     setScanning(true);
@@ -132,6 +186,10 @@ export default function RemoteFlashing() {
   }
 
   function finishedScanning() {
+    setScanning(false);
+  }
+
+  function cancelScanning() {
     setScanning(false);
   }
 
@@ -153,35 +211,15 @@ export default function RemoteFlashing() {
           </ButtonYellow>
         </Header>
 
-        <Modal
+        <CustomModal
           isOpen={isScanning}
           onAfterOpen={whileScanning}
           onRequestClose={finishedScanning}
+          onCancel={cancelScanning}
           style={customStyles}
-          contentLabel="Example Modal"
-        >
-          <ModalContent>
-            <ModalHeader>
-              <button onClick={finishedScanning}>close</button>
-            </ModalHeader>
-            <ModalBody>
-              <ModalTitle>Scanning...</ModalTitle>
-              <Oval
-                height={104}
-                width={104}
-                color="#ffffff"
-                wrapperStyle={{}}
-                wrapperClass=""
-                visible={true}
-                ariaLabel='oval-loading'
-                secondaryColor="#91939a"
-                strokeWidth={2}
-                strokeWidthSecondary={2}
+          title={"Scanning..."}
+        />
 
-              />
-            </ModalBody>
-          </ModalContent>
-        </Modal>
         <Content>
 
         </Content>
