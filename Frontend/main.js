@@ -13,11 +13,11 @@ const createWindow = () => {
       nodeIntegration: false,
       worldSafeExecuteJavascript: true,
       contextIsolation: true,
-      preload: path.join(__dirname, 'preload.js')
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     }
   })
 
-  win.loadFile(path.resolve(__dirname, 'index.html'));
+  win.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
   win.webContents.openDevTools()
 }
 
