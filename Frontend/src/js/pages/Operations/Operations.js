@@ -8,7 +8,9 @@ import ProgressBarLogo from '../../../../../img/svg/icons/icon_operations_progre
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 80px;
+  padding: 0 0px 10px 50px;
+  height: 100%;
+  background-color: ${({ theme }) => theme.colours.blues.medium_blue};
 `;
 
 const Nav = styled.div`
@@ -22,21 +24,28 @@ const Nav = styled.div`
 const StatusBar = styled.div`
   background-color: ${({ theme }) => theme.colours.blues.dark_blue};
   margin-top: 50px;
-  width: 800px;
+  width: 80%;
   height: 80px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items: center;
+  @media (max-width: 900px) {
+    width: 95%;
+  }
 `;
 
 const State = styled.p`
   color: ${({ theme }) => theme.colours.white};
   font-size: 24px;
+  @media (max-width: 900px) {
+    font-size: 15px;
+  }
 `;
 
 const ProgressBar = styled.div`
   border-bottom: 8px solid ${({ theme }) => theme.colours.blues.dark_blue};
-  width: 800px;
+  width: 80%;
   height: 40px;
   display: flex;
   padding-bottom: 5px ;
@@ -46,10 +55,17 @@ const ProgressBar = styled.div`
 const StatisticsSection = styled.div`
   margin: 50px 0 0 0;
   display:grid;
-  grid-template-columns: 380px 380px;
+  grid-template-columns: 35% 35%;
   grid-row: auto auto;
-  grid-column-gap: 180px;
+  grid-column-gap: 15%;
   grid-row-gap: 62px;
+
+  @media (max-width: 1400px) {
+    grid-template-columns: 35% 35%;
+  }
+  @media (max-width: 700px) {
+    grid-template-columns: 80%;
+  }
 `;
 
 export default function Operations() {
