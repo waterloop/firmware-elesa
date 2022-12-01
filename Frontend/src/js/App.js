@@ -4,9 +4,9 @@ import Operations from './pages/Operations/Operations';
 import Connections from './pages/Connections/Connections';
 import RemoteFlashing from './pages/RemoteFlashing/RemoteFlashing';
 import { ThemeProvider } from 'styled-components';
-import OperationIcon from '../../../img/svg/icons/icon_operations_sidebar.svg';
-import ConnectionIcon from '../../../img/svg/icons/icon_connections_sidebar.svg';
-import RemoteFlashingIcon from '../../../img/svg/icons/icon_remote_flashing_sidebar.svg';
+import OperationIcon from '@img/svg/icons/icon_operations_sidebar.svg';
+import ConnectionIcon from '@img/svg/icons/icon_connections_sidebar.svg';
+import RemoteFlashingIcon from '@img/svg/icons/icon_remote_flashing_sidebar.svg';
 import theme from './styles/theme';
   import {
     HashRouter as Router,
