@@ -9,7 +9,7 @@ import ConnectionIcon from '../../../img/svg/icons/icon_connections_sidebar.svg'
 import RemoteFlashingIcon from '../../../img/svg/icons/icon_remote_flashing_sidebar.svg';
 import theme from './styles/theme';
   import {
-	BrowserRouter as Router,
+    HashRouter as Router,
 	Routes,
 	Route,
 	Link
