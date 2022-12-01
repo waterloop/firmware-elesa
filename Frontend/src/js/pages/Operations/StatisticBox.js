@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import ScaleSVG from '../../../../../img/svg/icons/icon_operations_scale.svg';
+import ScaleSVG from '@img/svg/icons/icon_operations_scale.svg';
 
 const Box = styled.div`
-    width: 380px;
     height: 261px;
     background-color: ${({ theme }) => theme.colours.blues.dark_blue};
     display: flex;
@@ -13,14 +12,13 @@ const Box = styled.div`
     color: ${({ theme }) => theme.colours.white};
     font-size: 60px;
     border-radius: 5px;
+    text-align: center;
 
-    p{
-        margin:0;
-    }
-
-    p:first-child{
-        font-size: 34px;
-    }
+    p{margin:0;}
+    p:first-child{font-size: 34px;}
+    @media (max-width: 1000px) {
+        p:first-child{font-size: 25px;}
+      }
 `;
 
 export default function StatisticBox({component}) {
@@ -28,7 +26,7 @@ export default function StatisticBox({component}) {
         <Box>
             <p>{component.title}</p>
             <p>{component.number}</p>
-            <ScaleSVG />
+            <ScaleSVG width="80%" viewBox="0 0 310 58"/>
         </Box>
     );
 }

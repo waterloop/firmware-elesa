@@ -4,18 +4,18 @@ import { ButtonDarkGrey, ButtonLightGrey, ButtonYellow } from '../../components/
 import { ProgressBar, ProgressBarLogo } from '../../components/ProgressBar';
 import ScrollBar from '../../components/ScrollBar';
 import Modal from 'styled-react-modal'
-import ExitIcon from '../../../../../img/svg/exit.svg';
+import ExitIcon from '@img/svg/exit.svg';
 
 const ConnectionsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 80px;
-  width: 100%;
-  padding-right: 80px;
+  padding-left: 50px;
+  width: 80%;
   font-size: 1.25rem;
   padding-bottom: 100px;
   justify-content: stretch;
   align-items: stretch;
+  overflow: hidden;
 `
 const HeadingContainer = styled.div`
   display: flex;
@@ -34,6 +34,7 @@ const ConnectionsList = styled(ScrollBar)`
   padding-right: 50px;
   overflow-y: scroll;
   margin-bottom: 50px;
+  max-height: 70%;
 
 `
 

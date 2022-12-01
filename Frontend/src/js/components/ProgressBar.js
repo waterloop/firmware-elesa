@@ -10,7 +10,7 @@ const ProgressBar = styled.div`
 `;
 
 
-import ProgressBarLogo from '../../../../img/svg/icons/icon_operations_progressbar.svg';
+import ProgressBarLogo from '@img/svg/icons/icon_operations_progressbar.svg';
 
 export { 
   ProgressBarLogo,

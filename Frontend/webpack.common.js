@@ -37,7 +37,13 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['*', '.js'],
+    alias: {
+      "@src": path.resolve(__dirname, "src"),
+      "@components": path.resolve(__dirname, "src/js/components"),
+      "@pages": path.resolve(__dirname, "src/js/pages"),
+      "@img": path.resolve(__dirname, "img"),
+    },
+    extensions: ['.js'],
   },
   output: {
     filename: 'app.js',
