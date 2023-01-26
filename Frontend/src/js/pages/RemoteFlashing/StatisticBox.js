@@ -1,46 +1,36 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import ScaleSVG from '../../../../../img/svg/icons/icon_operations_scale.svg';
+import { ButtonYellow } from '../../components/Buttons'
 
 const Box = styled.div`
     width: 400px;
-    height: 267px;
     background-color: ${({ theme }) => theme.colours.blues.dark_blue};
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
     color: ${({ theme }) => theme.colours.white};
     border-radius: 5px;
     font-family: 'Roboto';
     font-style: normal;
-
-    h4 {
-        font-weight: 400;
-        font-size: 34px;
-        line-height: 40px;
-    }
-
-    span {
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 28px;
-    }
-
-    p {
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 28px;
-    }
+    margin-right: 20px;
+    margin-bottom: 25px;
 
 `;
+
+const DeviceName = styled.div`
+    margin-top: 40px;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 40px;
+`
 
 export default function StatisticBox(props) {
     return (
         <Box>
-            <p>{props.deviceName}</p>
+            <DeviceName>{props.deviceName}</DeviceName>
             <p><span>Device ID </span>{props.deviceID}</p>
-            <ButtonYellow height='56px' onClick={scanForDevices}>
+            <ButtonYellow height='56px' onClick={props.getDeviceDetails} style = {{"margin-bottom": "45px"}}>
                 View Device Details
             </ButtonYellow>
         </Box>

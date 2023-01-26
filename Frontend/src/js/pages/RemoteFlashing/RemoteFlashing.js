@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { Oval } from 'react-loader-spinner'
 import styled from 'styled-components';
@@ -62,7 +62,10 @@ const ProgressBar = styled.div`
 `;
 
 const Content = styled.div`
-  height: 60%;
+  height: 400px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex;
 `;
 
 const customStyles = {
@@ -174,7 +177,18 @@ export default function RemoteFlashing() {
   });
 
   const [isScanning, setScanning] = React.useState(false);
-  const [devices, setDevices] = React.useState([]);
+  const [showDevices, setShowDevices] = React.useState(false);
+
+  useEffect(() => {
+    console.log(showDevices)
+  }, [showDevices]);
+
+  // const [devices, setDevices] = React.useState(["Device 1", "Device 2", "Device 3", "Device 4"]);
+  const devices = ["Device 1", "Device 2", "Device 3", "Device 4"]
+
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+  }
 
   function scanForDevices() {
     setScanning(true);
@@ -187,10 +201,12 @@ export default function RemoteFlashing() {
 
   function finishedScanning() {
     setScanning(false);
+    setShowDevices(true);
   }
 
   function cancelScanning() {
     setScanning(false);
+    setShowDevices(true);
   }
 
   return (
@@ -221,7 +237,19 @@ export default function RemoteFlashing() {
         />
 
         <Content>
-
+          {showDevices ?
+              devices.map((device, I) => {
+                return (
+                  <StatisticBox
+                    deviceName = {device}
+                    deviceID = {device.split(" ")[1]}
+                    getDeviceDetails = {() => { console.log("Scanning device details") }}
+                  />
+                )
+              })
+          : (
+            null
+          )}
         </Content>
 
         <ProgressBar>

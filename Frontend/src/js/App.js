@@ -63,10 +63,10 @@ export default function App() {
                         <StyledLink to="/"> <OperationIcon /> <p> Operations </p> </StyledLink>
                         <StyledLink to="/remoteFlashing"> <ConnectionIcon /> <p> Remote Flashing </p> </StyledLink>
                         <StyledLink to="/connections"> <RemoteFlashingIcon />  <p> Connections </p> </StyledLink>
-                        
+
                     </Column>
                     <Routes>
-                        <Route path='*' element={<Operations />}> </Route>
+                        <Route path='*' element={<RemoteFlashing />}> </Route>
                         <Route path='/connections' element={<Connections />}> </Route>
                         <Route path='/remoteFlashing' element={<RemoteFlashing />}> </Route>
                     </Routes>
