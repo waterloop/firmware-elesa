@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import ScaleSVG from '../../../../../img/svg/icons/icon_operations_scale.svg';
+import ScaleSVG from '@img/svg/icons/icon_operations_scale.svg';
 
 const Box = styled.div`
     height: 261px;
