@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { Oval } from 'react-loader-spinner'
 import styled from 'styled-components';
 import theme from '../../styles/theme';
-import { ButtonYellow } from '../../components/Buttons'
+import { ButtonYellow, ButtonLightGrey } from '../../components/Buttons'
 import StatisticBox from './StatisticBox'
 import ExitIconWhite from '../../../../../img/svg/exit_white.svg';
 import StatusIconConnected from '../../../../../img/svg/icons/icon_status_bar_connected.svg';
@@ -14,6 +14,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 80px;
+  width: 100%
+  position: relative;
 `;
 
 const Nav = styled.div`
@@ -63,12 +65,13 @@ const ProgressBar = styled.div`
 
 const Content = styled.div`
   height: 400px;
+  width: 900px;
   flex-direction: row;
   flex-wrap: wrap;
   display: flex;
 `;
 
-const customStyles = {
+const loadingModalStyle = {
   overlay: {
     backgroundColor: 'rgba(255, 255, 255, 0.2)'
   },
@@ -76,19 +79,40 @@ const customStyles = {
     background: theme.colours.blues.dark_blue,
     width: '552px',
     height: '355px',
+    position: 'absolute',
+    left: 'calc((100% + 400px) / 2)',
     top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
   },
 };
 
-const ModalContent = styled.div`
+const deviceInfoModalStyle = {
+  overlay: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)'
+  },
+  content: {
+    width: '840px',
+    height: '582px',
+    padding: '40px',
+    paddingLeft: '65px',
+    background: theme.colours.blues.dark_blue,
+    position: 'absolute',
+    left: 'calc((100% + 400px) / 2)',
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+const CenteredModalContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  flex-direction: column;
+`;
+
+const ModalContent = styled.div`
+  display: flex;
   height: 100%;
   flex-direction: column;
 `;
@@ -117,21 +141,94 @@ const ModalTitle = styled.h3`
   color: ${({ theme }) => theme.colours.white};
 `
 
-const StatisticsSection = styled.div`
-  margin: 50px 0 0 0;
-  display:grid;
-  grid-template-columns: 35% 35%;
-  grid-row: auto auto;
-  grid-column-gap: 15%;
-  grid-row-gap: 62px;
+const DeviceInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 80px;
+  gap: 60px;
+`
 
-  @media (max-width: 1400px) {
-    grid-template-columns: 35% 35%;
-  }
-  @media (max-width: 700px) {
-    grid-template-columns: 80%;
-  }
-`;
+const DeviceInfoTitle = styled.div`
+  width: 100%;
+  height: 40px;
+  font-family: Roboto;
+  font-size: 34px;
+  margin-bottom: 40px;
+  color: ${({ theme }) => theme.colours.yellows.primary_yellow};
+`
+
+const DividerLine = styled.div`
+  border-left: 1px solid white; 
+  height: 100%;
+  width: 1px;
+`
+
+const DeviceInfoCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`
+
+const DeviceInfoColHeader = styled.div`
+  font-family: Roboto;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0.1em;
+  text-align: left;
+  width: 100%;
+  color: ${({ theme }) => theme.colours.yellows.primary_yellow};
+`
+
+const DeviceInfoRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: ${({ theme }) => theme.colours.white};
+`
+
+const DeviceInfoRowLabel = styled.label`
+  width: 125px;
+  height: 21px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: ${({ theme }) => theme.colours.white};
+`
+
+const DeviceInfoRowInput = styled.input`
+  height: 30px;
+  width: 150px;
+  left: 155px;
+  top: 0px;
+  border-radius: 3px;
+  padding: 5px 10px 5px 10px;
+  background-color: transparent;
+  border: 1px solid white;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: ${({ theme }) => theme.colours.white};
+`
+
+const DeviceInfoRowText = styled.div`
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+`
 
 function CustomModal(props) {
   return (
@@ -142,9 +239,9 @@ function CustomModal(props) {
       style={props.style}
       contentLabel="Example Modal"
     >
-      <ModalContent>
+      <CenteredModalContent>
         <ModalHeader>
-          <button onClick={props.onCancel} style={{backgroundColor:"transparent", border: "none", cursor: "pointer"}}>
+          <button onClick={props.onRequestClose} style={{backgroundColor:"transparent", border: "none", cursor: "pointer"}}>
             <ExitIconWhite/>
           </button>
         </ModalHeader>
@@ -163,7 +260,7 @@ function CustomModal(props) {
             strokeWidthSecondary={2}
           />
         </ModalBody>
-      </ModalContent>
+      </CenteredModalContent>
     </Modal>
   )
 }
@@ -177,19 +274,14 @@ export default function RemoteFlashing() {
   });
 
   const [isScanning, setScanning] = React.useState(false);
+  const [isScanningDevice, setScanningDevice] = React.useState(false);
   const [showDevices, setShowDevices] = React.useState(false);
-
-  useEffect(() => {
-    console.log(showDevices)
-  }, [showDevices]);
+  const [showDeviceDetails, setShowDeviceDetails] = React.useState(false);
 
   // const [devices, setDevices] = React.useState(["Device 1", "Device 2", "Device 3", "Device 4"]);
   const devices = ["Device 1", "Device 2", "Device 3", "Device 4"]
 
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms))
-  }
-
+  // Scanning for devices
   function scanForDevices() {
     setScanning(true);
   }
@@ -204,13 +296,24 @@ export default function RemoteFlashing() {
     setShowDevices(true);
   }
 
-  function cancelScanning() {
-    setScanning(false);
-    setShowDevices(true);
+  // Device details
+  function getDeviceDetails() {
+    setScanningDevice(true);
+  }
+
+  function whileScanningDevice() {
+    console.log("Scanning");
+  }
+
+  function finishedScanningDevice() {
+    console.log("finished canning device")
+    setScanningDevice(false);
+    setShowDevices(false);
+    setShowDeviceDetails(true);
   }
 
   return (
-    <div>
+    <div style={{"width": "100%"}}>
       <Nav>
         <NavContent>
           <connectionStatus.connected.logo />
@@ -227,23 +330,98 @@ export default function RemoteFlashing() {
           </ButtonYellow>
         </Header>
 
+
         <CustomModal
           isOpen={isScanning}
           onAfterOpen={whileScanning}
           onRequestClose={finishedScanning}
-          onCancel={cancelScanning}
-          style={customStyles}
+          style={loadingModalStyle}
           title={"Scanning..."}
         />
+
+        <CustomModal
+          isOpen={isScanningDevice}
+          onAfterOpen={whileScanningDevice}
+          onRequestClose={finishedScanningDevice}
+          style={loadingModalStyle}
+          title={"Scanning..."}
+        />
+
+        <Modal
+          isOpen={showDeviceDetails}
+          onAfterOpen={console.log(`Show ${showDeviceDetails}`)}
+          // onRequestClose={setShowDeviceDetails(false)}
+          style={deviceInfoModalStyle}
+          contentLabel="Device Details"
+        >
+          <ModalContent>
+            <DeviceInfoTitle>
+              {/* <button onClick={setShowDeviceDetails(false)} style={{backgroundColor:"transparent", border: "none", cursor: "pointer"}}>
+                <ExitIconWhite/>
+              </button> */}
+              Device X
+            </DeviceInfoTitle>
+            <DeviceInfo>
+
+              <DeviceInfoCol>
+                <DeviceInfoColHeader>DEVICE INFORMATION</DeviceInfoColHeader>
+                <DeviceInfoRow>
+                  <DeviceInfoRowLabel for="deviceMode">Device Mode</DeviceInfoRowLabel>
+                  <DeviceInfoRowInput type="text" id="deviceMode" name="deviceMode"/>
+                </DeviceInfoRow>
+                <DeviceInfoRow>
+                  <DeviceInfoRowLabel for="shortDeviceID">Short Device ID</DeviceInfoRowLabel>
+                  <DeviceInfoRowInput type="text" id="shortDeviceID" name="shortDeviceID"/>
+                </DeviceInfoRow>
+                <DeviceInfoRow>
+                  <DeviceInfoRowLabel for="longDeviceID">Long Device ID</DeviceInfoRowLabel>
+                  <DeviceInfoRowInput type="text" id="longDeviceID" name="longDeviceID"/>
+                </DeviceInfoRow>
+                <DeviceInfoRow>
+                  <ButtonLightGrey>SAVE CHANGES</ButtonLightGrey>
+                </DeviceInfoRow>
+                <br/>
+                <DeviceInfoColHeader>DEVICE STATUS</DeviceInfoColHeader>
+                <DeviceInfoRow>
+                  <DeviceInfoRowLabel>Device Type</DeviceInfoRowLabel>
+                  STM32L432KC
+                </DeviceInfoRow>
+                <DeviceInfoRow>
+                  <DeviceInfoRowLabel>Device Version</DeviceInfoRowLabel>
+                  2.14
+                </DeviceInfoRow>
+              </DeviceInfoCol>
+              <DividerLine/>
+              <DeviceInfoCol>
+                <DeviceInfoColHeader>DEVICE MANAGEMENT</DeviceInfoColHeader>
+                <DeviceInfoRow>
+                  <DeviceInfoRowText>Save compiled source code to a device connected to the CAN Bus.</DeviceInfoRowText>
+                  <ButtonLightGrey>FLASH DEVICE</ButtonLightGrey>
+                </DeviceInfoRow>
+                <DeviceInfoRow>
+                  <DeviceInfoRowText>Erase a segment of the memory on a board.</DeviceInfoRowText>
+                  <ButtonLightGrey>ERASE</ButtonLightGrey>
+                </DeviceInfoRow>
+                <DeviceInfoRow>
+                  <DeviceInfoRowText>Ensure the integrity of code flashed to the board.</DeviceInfoRowText>
+                  <ButtonLightGrey>CHECKSUM</ButtonLightGrey>
+                </DeviceInfoRow>
+
+              </DeviceInfoCol>
+
+            </DeviceInfo>
+          </ModalContent>
+        </Modal>
 
         <Content>
           {showDevices ?
               devices.map((device, I) => {
                 return (
                   <StatisticBox
+                    key = {I}
                     deviceName = {device}
                     deviceID = {device.split(" ")[1]}
-                    getDeviceDetails = {() => { console.log("Scanning device details") }}
+                    getDeviceDetails = {() => { console.log("Scanning device details"); getDeviceDetails(); }}
                   />
                 )
               })

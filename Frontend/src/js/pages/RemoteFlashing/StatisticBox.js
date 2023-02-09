@@ -30,7 +30,7 @@ export default function StatisticBox(props) {
         <Box>
             <DeviceName>{props.deviceName}</DeviceName>
             <p><span>Device ID </span>{props.deviceID}</p>
-            <ButtonYellow height='56px' onClick={props.getDeviceDetails} style = {{"margin-bottom": "45px"}}>
+            <ButtonYellow height='56px' onClick={props.getDeviceDetails} style = {{"marginBottom": "45px"}}>
                 View Device Details
             </ButtonYellow>
         </Box>

@@ -17,15 +17,13 @@ import theme from './styles/theme';
 
 const Container = styled.div`
     background-color: ${({ theme }) => theme.colours.blues.light_blue};
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
     color: white;
-    display:grid;
-    grid-template-columns: 25% 75%;
-    grid-column-gap: 0px;
+    display: fl ex;
     font-family: ${({ theme }) => theme.font};
-    @media (max-width: 900px) {
-        grid-template-columns: 20% 80%;
-      }
 `;
 
 const Column = styled.div`
@@ -34,6 +32,7 @@ const Column = styled.div`
   align-items: flex-start;
   padding: 0 0 10px 0;
   height: 100%;
+  width: 400px;
   background-color: ${({ theme }) => theme.colours.blues.dark_blue};
 `;
 
@@ -63,7 +62,6 @@ export default function App() {
                         <StyledLink to="/"> <OperationIcon /> <p> Operations </p> </StyledLink>
                         <StyledLink to="/remoteFlashing"> <ConnectionIcon /> <p> Remote Flashing </p> </StyledLink>
                         <StyledLink to="/connections"> <RemoteFlashingIcon />  <p> Connections </p> </StyledLink>
-
                     </Column>
                     <Routes>
                         <Route path='*' element={<RemoteFlashing />}> </Route>
