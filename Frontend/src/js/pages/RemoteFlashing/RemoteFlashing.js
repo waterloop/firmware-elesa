@@ -150,6 +150,8 @@ const DeviceInfo = styled.div`
 `
 
 const DeviceInfoTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 40px;
   font-family: Roboto;
@@ -241,7 +243,7 @@ function CustomModal(props) {
     >
       <CenteredModalContent>
         <ModalHeader>
-          <button onClick={props.onRequestClose} style={{backgroundColor:"transparent", border: "none", cursor: "pointer"}}>
+          <button onClick={() => {console.log("1"); props.onRequestClose()}} style={{backgroundColor:"transparent", border: "none", cursor: "pointer"}}>
             <ExitIconWhite/>
           </button>
         </ModalHeader>
@@ -275,6 +277,7 @@ export default function RemoteFlashing() {
 
   const [isScanning, setScanning] = React.useState(false);
   const [isScanningDevice, setScanningDevice] = React.useState(false);
+  const [isSavingDetails, setSavingDetails] = React.useState(false);
   const [showDevices, setShowDevices] = React.useState(false);
   const [showDeviceDetails, setShowDeviceDetails] = React.useState(false);
 
@@ -312,6 +315,16 @@ export default function RemoteFlashing() {
     setShowDeviceDetails(true);
   }
 
+  function closeDeviceDetails() {
+    setShowDeviceDetails(false);
+    setShowDevices(true);
+  }
+
+  function saveDeviceDetails() {
+    setShowDeviceDetails(false);
+    setSavingDetails(true);
+  }
+
   return (
     <div style={{"width": "100%"}}>
       <Nav>
@@ -347,38 +360,45 @@ export default function RemoteFlashing() {
           title={"Scanning..."}
         />
 
+        <CustomModal
+          isOpen={isSavingDetails}
+          onAfterOpen={() => {}}  // TODO
+          onRequestClose={() => {setSavingDetails(false)}}
+          style={loadingModalStyle}
+          title={"Saving Changes"}
+        />
+
         <Modal
           isOpen={showDeviceDetails}
-          onAfterOpen={console.log(`Show ${showDeviceDetails}`)}
-          // onRequestClose={setShowDeviceDetails(false)}
+          onRequestClose={closeDeviceDetails}
           style={deviceInfoModalStyle}
           contentLabel="Device Details"
         >
           <ModalContent>
             <DeviceInfoTitle>
-              {/* <button onClick={setShowDeviceDetails(false)} style={{backgroundColor:"transparent", border: "none", cursor: "pointer"}}>
-                <ExitIconWhite/>
-              </button> */}
               Device X
+              <button onClick={closeDeviceDetails} style={{backgroundColor:"transparent", border: "none", cursor: "pointer"}}>
+                <ExitIconWhite/>
+              </button>
             </DeviceInfoTitle>
             <DeviceInfo>
 
               <DeviceInfoCol>
                 <DeviceInfoColHeader>DEVICE INFORMATION</DeviceInfoColHeader>
                 <DeviceInfoRow>
-                  <DeviceInfoRowLabel for="deviceMode">Device Mode</DeviceInfoRowLabel>
+                  <DeviceInfoRowLabel htmlFor="deviceMode">Device Mode</DeviceInfoRowLabel>
                   <DeviceInfoRowInput type="text" id="deviceMode" name="deviceMode"/>
                 </DeviceInfoRow>
                 <DeviceInfoRow>
-                  <DeviceInfoRowLabel for="shortDeviceID">Short Device ID</DeviceInfoRowLabel>
+                  <DeviceInfoRowLabel htmlFor="shortDeviceID">Short Device ID</DeviceInfoRowLabel>
                   <DeviceInfoRowInput type="text" id="shortDeviceID" name="shortDeviceID"/>
                 </DeviceInfoRow>
                 <DeviceInfoRow>
-                  <DeviceInfoRowLabel for="longDeviceID">Long Device ID</DeviceInfoRowLabel>
+                  <DeviceInfoRowLabel htmlFor="longDeviceID">Long Device ID</DeviceInfoRowLabel>
                   <DeviceInfoRowInput type="text" id="longDeviceID" name="longDeviceID"/>
                 </DeviceInfoRow>
                 <DeviceInfoRow>
-                  <ButtonLightGrey>SAVE CHANGES</ButtonLightGrey>
+                  <ButtonLightGrey onClick={saveDeviceDetails}>SAVE CHANGES</ButtonLightGrey>
                 </DeviceInfoRow>
                 <br/>
                 <DeviceInfoColHeader>DEVICE STATUS</DeviceInfoColHeader>
