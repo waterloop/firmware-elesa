@@ -14,8 +14,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 80px;
-  width: 100%
-  position: relative;
+  width: 100%;
 `;
 
 const Nav = styled.div`
@@ -268,7 +267,7 @@ function CustomModal(props) {
 }
 
 export default function RemoteFlashing() {
-  const [connectionStatus, setconnectionStatus] = useState({
+  const [connectionStatus, setConnectionStatus] = useState({
     connected: 
     {text: "CONNECTED", logo: StatusIconConnected}, 
     disconnected:
@@ -330,7 +329,7 @@ export default function RemoteFlashing() {
       <Nav>
         <NavContent>
           <connectionStatus.connected.logo />
-          <p>{connectionStatus.disconnected.text}</p>
+          <p>{connectionStatus.connected.text}</p>
         </NavContent>
       </Nav>
       <Container>

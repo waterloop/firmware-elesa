@@ -11,7 +11,6 @@ const Container = styled.div`
   padding: 0 80px 0 80px;
   height: 100%;
   width: 100%;
-  background-color: ${({ theme }) => theme.colours.blues.medium_blue};
 `;
 
 const Nav = styled.div`
