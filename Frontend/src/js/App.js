@@ -64,7 +64,7 @@ export default function App() {
                         <StyledLink to="/connections"> <RemoteFlashingIcon />  <p> Connections </p> </StyledLink>
                     </Column>
                     <Routes>
-                        <Route path='*' element={<RemoteFlashing />}> </Route>
+                        <Route path='*' element={<Operations />}> </Route>
                         <Route path='/connections' element={<Connections />}> </Route>
                         <Route path='/remoteFlashing' element={<RemoteFlashing />}> </Route>
                     </Routes>
