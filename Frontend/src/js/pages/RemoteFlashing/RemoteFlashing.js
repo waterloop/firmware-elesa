@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { Oval } from 'react-loader-spinner'
 import styled from 'styled-components';
-import theme from '../../styles/theme';
-import { ButtonYellow, ButtonLightGrey } from '../../components/Buttons'
+import theme from '@styles/theme';
+import { ButtonYellow, ButtonLightGrey } from '@components/Buttons'
 import StatisticBox from './StatisticBox'
-import ExitIconWhite from '../../../../../img/svg/exit_white.svg';
-import StatusIconConnected from '../../../../../img/svg/icons/icon_status_bar_connected.svg';
-import StatusIconDisconnected from '../../../../../img/svg/icons/icon_status_bar_disconnected.svg';
-import ProgressBarLogo from '../../../../../img/svg/icons/icon_operations_progressbar.svg';
+import ExitIconWhite from '@img/svg/exit_white.svg';
+import StatusIconConnected from '@img/svg/icons/icon_status_bar_connected.svg';
+import StatusIconDisconnected from '@img/svg/icons/icon_status_bar_disconnected.svg';
+import ProgressBarLogo from '@img/svg/icons/icon_operations_progressbar.svg';
 
 const Container = styled.div`
   display: flex;

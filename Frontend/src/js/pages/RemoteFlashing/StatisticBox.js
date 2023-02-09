@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import ScaleSVG from '../../../../../img/svg/icons/icon_operations_scale.svg';
-import { ButtonYellow } from '../../components/Buttons'
+import { ButtonYellow } from '@components/Buttons'
 
 const Box = styled.div`
     width: 400px;
