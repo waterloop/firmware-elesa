@@ -10,7 +10,7 @@ const ConnectionsContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 50px;
-  width: 80%;
+  width: 90%;
   font-size: 1.25rem;
   padding-bottom: 100px;
   justify-content: stretch;
@@ -34,7 +34,7 @@ const ConnectionsList = styled(ScrollBar)`
   padding-right: 50px;
   overflow-y: scroll;
   margin-bottom: 50px;
-  max-height: 70%;
+  max-height: 85%;
 
 `
 
@@ -90,8 +90,8 @@ const ConnectionCard = ({ connectionName, ipAddress}) => {
         </div>
       </ConnectionCardColumn>
       <ConnectionCardColumn>
-        <ButtonYellow style={{ marginBottom: '1rem'}} >CONNECT</ButtonYellow>
-        <ButtonDarkGrey>DISCONNECT</ButtonDarkGrey>
+        <ButtonYellow style={{ marginBottom: '1rem'}} fontSize={'1.1rem'} >CONNECT</ButtonYellow>
+        <ButtonDarkGrey fontSize={'1.1rem'}>DISCONNECT</ButtonDarkGrey>
       </ConnectionCardColumn>
     </ConnectionCardContainer>
   );

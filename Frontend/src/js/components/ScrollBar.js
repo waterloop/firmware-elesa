@@ -1,7 +1,7 @@
 import styled from "styled-components"
 const ScrollBar = styled.div`
 &::-webkit-scrollbar {
-  width: 30px;
+  width: 20px;
   border-radius: 13px;
   color: red;
   background-color: ${({ theme }) => theme.colours.blues.dark_blue};
