@@ -39,7 +39,8 @@ const Header = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 139px;
+  justify-content: space-between;
+  width: 43%;
 
   h3 {
     font-family: 'Roboto';
@@ -53,7 +54,7 @@ const Header = styled.div`
 
 const ProgressBar = styled.div`
   border-bottom: 8px solid ${({ theme }) => theme.colours.blues.dark_blue};
-  width: 800px;
+  width: 60%;
   height: 40px;
   display: flex;
   padding-bottom: 5px;
@@ -79,7 +80,7 @@ const loadingModalStyle = {
     width: '552px',
     height: '355px',
     position: 'absolute',
-    left: 'calc((100% + 400px) / 2)',
+    left: '50%',
     top: '50%',
     transform: 'translate(-50%, -50%)',
   },
@@ -96,7 +97,7 @@ const deviceInfoModalStyle = {
     paddingLeft: '65px',
     background: theme.colours.blues.dark_blue,
     position: 'absolute',
-    left: 'calc((100% + 400px) / 2)',
+    left: '50%',
     top: '50%',
     transform: 'translate(-50%, -50%)',
   },

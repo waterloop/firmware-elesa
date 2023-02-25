@@ -13,7 +13,6 @@ const ConnectionsContainer = styled.div`
   width: 90%;
   font-size: 1.25rem;
   padding-bottom: 100px;
-  justify-content: stretch;
   align-items: stretch;
   overflow: hidden;
 `
@@ -24,6 +23,7 @@ const HeadingContainer = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-right: 80px;
+  width: 75%;
 `;
 
 const HeadingButtonContainer = styled.div`
@@ -51,6 +51,7 @@ const ConnectionCardContainer = styled.div`
   border-radius: 5px;
   margin-bottom: 1rem;
   justify-content: space-between;
+  width: 70%;
 `
 
 const ConnectionModal = Modal.styled`
