@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Operations from './pages/Operations/Operations';
 import Connections from './pages/Connections/Connections';
 import RemoteFlashing from './pages/RemoteFlashing/RemoteFlashing';
+import ZeroMQ from './pages/ZeroMQTest/ZeroMQ';
 import { ThemeProvider } from 'styled-components';
 import OperationIcon from '@img/svg/icons/icon_operations_sidebar.svg';
 import ConnectionIcon from '@img/svg/icons/icon_connections_sidebar.svg';
@@ -64,14 +65,15 @@ export default function App() {
                     <Container>
                         <Column>
                             <StyledLink to="/"> <OperationIcon /> <p> Operations </p> </StyledLink>
-                            <StyledLink to="/remtoeFlashing"> <ConnectionIcon /> <p> Remote Flashing </p> </StyledLink>
+                            <StyledLink to="/remoteFlashing"> <ConnectionIcon /> <p> Remote Flashing </p> </StyledLink>
                             <StyledLink to="/connections"> <RemoteFlashingIcon />  <p> Connections </p> </StyledLink>
-                            
+                            <StyledLink to="/test"> <RemoteFlashingIcon />  <p> Test </p> </StyledLink>
                         </Column>
                         <Routes>
                             <Route path='*' element={<Operations />}> </Route>
                             <Route path='/connections' element={<Connections />}> </Route>
-                            <Route path='/remtoeFlashing' element={<RemoteFlashing />}> </Route>
+                            <Route path='/remoteFlashing' element={<RemoteFlashing />}> </Route>
+                            <Route path='/test' element={<ZeroMQ />}> </Route>
                         </Routes>
                     </Container>
                 </Router>

@@ -1,24 +1,41 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcRenderer } = require('electron');
 const path = require('path');
+const log = require('electron-log');
 
+var zmq = require("zeromq");
+
+// Logger for debugging purposes
+log.initialize({ preload: true });
+
+const sockPort = "tcp://127.0.0.1:3000";
+const sockTopic = "data";
+const sock = new zmq.Subscriber
 const isDev = !app.isPackaged;
 
 // Create the main window
-const createWindow = () => {
+const createWindow = async () => {
   const win = new BrowserWindow({
-    width: 2800,
-    height: 1600,
     backgroundColor: "white",
     webPreferences: {
       nodeIntegration: false,
-      worldSafeExecuteJavascript: true,
+      enableRemoteModule: false,
       contextIsolation: true,
+      worldSafeExecuteJavascript: true,
       preload: path.join(__dirname, 'preload.js')
     }
+    
   })
-
+  
+  win.maximize();
   win.loadFile(path.resolve(__dirname, 'index.html'));
-  win.webContents.openDevTools()
+  win.webContents.openDevTools();
+
+  await sock.connect(sockPort);
+  sock.subscribe(sockTopic);
+  
+  for await (const [topic, msg] of sock) {
+    win.webContents.send("fromMain", {});
+  }
 }
 
 if (isDev) {

@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/darren/Documents/waterloop/firmware-elesa/Backend/build",
+  "command": "/usr/bin/clang++  -DZMQ_BUILD_DRAFT_API  -g   -o CMakeFiles/elesa-backend.dir/main.cpp.o -c /home/darren/Documents/waterloop/firmware-elesa/Backend/main.cpp",
+  "file": "/home/darren/Documents/waterloop/firmware-elesa/Backend/main.cpp"
+}
+]
