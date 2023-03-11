@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import theme from '@styles/theme';
 import { ButtonYellow, ButtonLightGrey } from '@components/Buttons'
 import StatisticBox from './StatisticBox'
+import ScrollBar from '../../components/ScrollBar';
 import ExitIconWhite from '@img/svg/exit_white.svg';
 import StatusIconConnected from '@img/svg/icons/icon_status_bar_connected.svg';
 import StatusIconDisconnected from '@img/svg/icons/icon_status_bar_disconnected.svg';
@@ -15,6 +16,8 @@ const Container = styled.div`
   flex-direction: column;
   padding-left: 80px;
   width: 100%;
+  height: 90%;
+  overflow: hidden;
 `;
 
 const Nav = styled.div`
@@ -54,21 +57,22 @@ const Header = styled.div`
 
 const ProgressBar = styled.div`
   border-bottom: 8px solid ${({ theme }) => theme.colours.blues.dark_blue};
-  width: 60%;
+  min-width: 45vw;
+  max-width: 900px;
   height: 40px;
   display: flex;
   padding-bottom: 5px;
-  position: fixed;
   bottom: 30px;
   align-items: flex-end;
 `;
 
-const Content = styled.div`
-  height: 400px;
+const Content = styled(ScrollBar)`
+  max-height: 525px;
   width: 900px;
   flex-direction: row;
   flex-wrap: wrap;
   display: flex;
+  overflow-y: scroll;
 `;
 
 const loadingModalStyle = {
@@ -433,26 +437,31 @@ export default function RemoteFlashing() {
           </ModalContent>
         </Modal>
 
-        <Content>
-          {showDevices ?
-              devices.map((device, I) => {
-                return (
-                  <StatisticBox
-                    key = {I}
-                    deviceName = {device}
-                    deviceID = {device.split(" ")[1]}
-                    getDeviceDetails = {() => { console.log("Scanning device details"); getDeviceDetails(); }}
-                  />
-                )
-              })
-          : (
-            null
-          )}
-        </Content>
+        <div
+          style = {{display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%"}}
+        >
+          <Content>
+            {showDevices ?
+                devices.map((device, i) => {
+                  return (
+                    <StatisticBox
+                      key = {i}
+                      deviceName = {device}
+                      deviceID = {device.split(" ")[1]}
+                      getDeviceDetails = {() => { console.log("Scanning device details"); getDeviceDetails(); }}
+                    />
+                  )
+                })
+            : (
+              null
+            )}
+          </Content>
 
-        <ProgressBar>
-          <ProgressBarLogo />
-        </ProgressBar>
+          <ProgressBar>
+            <ProgressBarLogo />
+          </ProgressBar>
+        </div>
+
       </Container>
     </div>
   )

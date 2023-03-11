@@ -13,8 +13,7 @@ const Box = styled.div`
     font-family: 'Roboto';
     font-style: normal;
     margin-right: 20px;
-    margin-bottom: 25px;
-
+    margin-bottom: 25px
 `;
 
 const DeviceName = styled.div`

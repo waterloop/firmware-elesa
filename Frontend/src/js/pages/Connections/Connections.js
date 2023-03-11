@@ -35,7 +35,7 @@ const ConnectionsList = styled(ScrollBar)`
   overflow-y: scroll;
   margin-bottom: 50px;
   max-height: 85%;
-
+  max-width: 65vw;
 `
 
 const ConnectionCardColumn = styled.div`
@@ -51,7 +51,6 @@ const ConnectionCardContainer = styled.div`
   border-radius: 5px;
   margin-bottom: 1rem;
   justify-content: space-between;
-  width: 70%;
 `
 
 const ConnectionModal = Modal.styled`
@@ -91,8 +90,8 @@ const ConnectionCard = ({ connectionName, ipAddress}) => {
         </div>
       </ConnectionCardColumn>
       <ConnectionCardColumn>
-        <ButtonYellow style={{ marginBottom: '1rem'}} fontSize={'1.1rem'} >CONNECT</ButtonYellow>
-        <ButtonDarkGrey fontSize={'1.1rem'}>DISCONNECT</ButtonDarkGrey>
+        <ButtonYellow style={{ marginBottom: '1rem'}} fontSize={'1.1rem'} width="294px">CONNECT</ButtonYellow>
+        <ButtonDarkGrey fontSize={'1.1rem'} width="294px">DISCONNECT</ButtonDarkGrey>
       </ConnectionCardColumn>
     </ConnectionCardContainer>
   );
@@ -128,7 +127,7 @@ export default function Connections() {
           <ConnectionCard key={connection.ipAddress} {...connection} />
         ))}
       </ConnectionsList>
-      <ProgressBar style={{marginRight: "80px"}}>
+      <ProgressBar style={{marginRight: "80px", width: "64vw"}}>
         <ProgressBarLogo />
       </ProgressBar>
 
