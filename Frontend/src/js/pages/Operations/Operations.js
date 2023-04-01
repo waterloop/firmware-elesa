@@ -8,9 +8,9 @@ import ProgressBarLogo from '@img/svg/icons/icon_operations_progressbar.svg';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 0px 10px 50px;
+  padding: 0 80px 0 80px;
   height: 100%;
-  background-color: ${({ theme }) => theme.colours.blues.medium_blue};
+  width: 100%;
 `;
 
 const Nav = styled.div`
@@ -24,18 +24,19 @@ const Nav = styled.div`
 const StatusBar = styled.div`
   background-color: ${({ theme }) => theme.colours.blues.dark_blue};
   margin-top: 50px;
-  width: 80%;
   height: 80px;
+  width: 700px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
   align-items: center;
   @media (max-width: 900px) {
     width: 95%;
   }
 `;
 
-const State = styled.p`
+const State = styled.div`
+  width: 140px;
+  text-align: center;
   color: ${({ theme }) => theme.colours.white};
   font-size: 24px;
   @media (max-width: 900px) {
@@ -44,15 +45,16 @@ const State = styled.p`
 `;
 
 const ProgressBar = styled.div`
-  border-bottom: 8px solid ${({ theme }) => theme.colours.blues.dark_blue};
-  width: 80%;
+  width: 700px;
   height: 40px;
   display: flex;
   padding-bottom: 5px ;
   align-items: flex-end;
+  border-bottom: 8px solid ${({ theme }) => theme.colours.blues.dark_blue};
 `;
 
 const StatisticsSection = styled.div`
+  max-width: 1040px;
   margin: 50px 0 0 0;
   display:grid;
   grid-template-columns: 35% 35%;

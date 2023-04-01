@@ -13,7 +13,6 @@ const ConnectionsContainer = styled.div`
   width: 90%;
   font-size: 1.25rem;
   padding-bottom: 100px;
-  justify-content: stretch;
   align-items: stretch;
   overflow: hidden;
 `
@@ -24,6 +23,7 @@ const HeadingContainer = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-right: 80px;
+  width: 75%;
 `;
 
 const HeadingButtonContainer = styled.div`
@@ -35,7 +35,7 @@ const ConnectionsList = styled(ScrollBar)`
   overflow-y: scroll;
   margin-bottom: 50px;
   max-height: 85%;
-
+  max-width: 65vw;
 `
 
 const ConnectionCardColumn = styled.div`
@@ -90,8 +90,8 @@ const ConnectionCard = ({ connectionName, ipAddress}) => {
         </div>
       </ConnectionCardColumn>
       <ConnectionCardColumn>
-        <ButtonYellow style={{ marginBottom: '1rem'}} fontSize={'1.1rem'} >CONNECT</ButtonYellow>
-        <ButtonDarkGrey fontSize={'1.1rem'}>DISCONNECT</ButtonDarkGrey>
+        <ButtonYellow style={{ marginBottom: '1rem'}} fontSize={'1.1rem'} width="294px">CONNECT</ButtonYellow>
+        <ButtonDarkGrey fontSize={'1.1rem'} width="294px">DISCONNECT</ButtonDarkGrey>
       </ConnectionCardColumn>
     </ConnectionCardContainer>
   );
@@ -127,7 +127,7 @@ export default function Connections() {
           <ConnectionCard key={connection.ipAddress} {...connection} />
         ))}
       </ConnectionsList>
-      <ProgressBar style={{marginRight: "80px"}}>
+      <ProgressBar style={{marginRight: "80px", width: "64vw"}}>
         <ProgressBarLogo />
       </ProgressBar>
 
