@@ -18,16 +18,14 @@ import { ModalProvider } from 'styled-react-modal';
 
 
 const Container = styled.div`
-    background-color: ${({ theme }) => theme.colours.blues.medium_blue};
-    height: 100vh;
+    background-color: ${({ theme }) => theme.colours.blues.light_blue};
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
     color: white;
-    display:grid;
-    grid-template-columns: 25% 75%;
-    grid-column-gap: 0px;
+    display: fl ex;
     font-family: ${({ theme }) => theme.font};
-    @media (max-width: 900px) {
-        grid-template-columns: 20% 80%;
-      }
 `;
 
 const Column = styled.div`
@@ -36,6 +34,7 @@ const Column = styled.div`
   align-items: flex-start;
   padding: 0 0 10px 0;
   height: 100%;
+  max-width: 400px;
   background-color: ${({ theme }) => theme.colours.blues.dark_blue};
 `;
 
@@ -62,16 +61,15 @@ export default function App() {
             <ModalProvider>
                 <Router>
                     <Container>
-                        <Column>
+                        <Column id="navCol">
                             <StyledLink to="/"> <OperationIcon /> <p> Operations </p> </StyledLink>
-                            <StyledLink to="/remtoeFlashing"> <ConnectionIcon /> <p> Remote Flashing </p> </StyledLink>
+                            <StyledLink to="/remoteFlashing"> <ConnectionIcon /> <p> Remote Flashing </p> </StyledLink>
                             <StyledLink to="/connections"> <RemoteFlashingIcon />  <p> Connections </p> </StyledLink>
-                            
                         </Column>
                         <Routes>
                             <Route path='*' element={<Operations />}> </Route>
                             <Route path='/connections' element={<Connections />}> </Route>
-                            <Route path='/remtoeFlashing' element={<RemoteFlashing />}> </Route>
+                            <Route path='/remoteFlashing' element={<RemoteFlashing />}> </Route>
                         </Routes>
                     </Container>
                 </Router>

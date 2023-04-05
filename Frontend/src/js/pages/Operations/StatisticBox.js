@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ScaleSVG from '@img/svg/icons/icon_operations_scale.svg';
 
 const Box = styled.div`
+    width: 350px;
     height: 261px;
     background-color: ${({ theme }) => theme.colours.blues.dark_blue};
     display: flex;
@@ -14,7 +15,7 @@ const Box = styled.div`
     border-radius: 5px;
     text-align: center;
 
-    p{margin:0;}
+        p{margin:0;}
     p:first-child{font-size: 34px;}
     @media (max-width: 1000px) {
         p:first-child{font-size: 25px;}
