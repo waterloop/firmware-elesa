@@ -31,11 +31,16 @@ const Container = styled.div`
 const Column = styled.div`
   display: flex;
   flex-direction: column;
+  position: fixed;
   align-items: flex-start;
   padding: 0 0 10px 0;
   height: 100%;
   max-width: 400px;
   background-color: ${({ theme }) => theme.colours.blues.dark_blue};
+`;
+
+const Content = styled.div`
+    margin-left: 25%;
 `;
 
 const StyledLink = styled(Link)`
@@ -66,11 +71,13 @@ export default function App() {
                             <StyledLink to="/remoteFlashing"> <ConnectionIcon /> <p> Remote Flashing </p> </StyledLink>
                             <StyledLink to="/connections"> <RemoteFlashingIcon />  <p> Connections </p> </StyledLink>
                         </Column>
-                        <Routes>
-                            <Route path='*' element={<Operations />}> </Route>
-                            <Route path='/connections' element={<Connections />}> </Route>
-                            <Route path='/remoteFlashing' element={<RemoteFlashing />}> </Route>
-                        </Routes>
+                        <Content>
+                            <Routes>
+                                <Route path='*' element={<Operations />}> </Route>
+                                <Route path='/connections' element={<Connections />}> </Route>
+                                <Route path='/remoteFlashing' element={<RemoteFlashing />}> </Route>
+                            </Routes>
+                        </Content>
                     </Container>
                 </Router>
             </ModalProvider>
