@@ -432,7 +432,7 @@ function ErrorModal(props) {
         <ModalBody>
 
           <WarningModalHeader>
-            <WarningIcon/>
+            <ErrorIcon/>
             <WarningModalTitle style={{"color": "#FF4141"}}>
             Action failed.
             </WarningModalTitle>
