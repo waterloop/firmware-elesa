@@ -12,24 +12,25 @@ const Button = styled.button`
   margin: 2px 2px;
   cursor: pointer;
   text-transform: uppercase;
+  font-weight: 500;
 `
 
 const ButtonYellow = styled(Button)`
-background-color: ${({ theme }) => theme.colours.yellows.primary_yellow};
-color: ${({ theme }) => theme.colours.black};
-border: 4px solid ${({ theme }) => theme.colours.yellows.primary_yellow};
+  background-color: ${({ theme }) => theme.colours.yellows.primary_yellow};
+  color: ${({ theme }) => theme.colours.black};
+  border: 4px solid ${({ theme }) => theme.colours.yellows.primary_yellow};
 `
 
 const ButtonDarkGrey = styled(Button)`
-background-color: ${({ theme }) => theme.colours.greys.grey1};
-color: ${({ theme }) => theme.colours.white};
-border: 4px solid ${({ theme }) => theme.colours.greys.grey1};
+  background-color: ${({ theme }) => theme.colours.greys.grey1};
+  color: ${({ theme }) => theme.colours.white};
+  border: 4px solid ${({ theme }) => theme.colours.greys.grey1};
 `
 
 const ButtonLightGrey = styled(Button)`
-background-color: ${({ theme }) => theme.colours.greys.grey2};
-color: ${({ theme }) => theme.colours.black};
-border: 4px solid ${({ theme }) => theme.colours.greys.grey2};
+  background-color: ${({ theme }) => theme.colours.greys.grey2};
+  color: ${({ theme }) => theme.colours.black};
+  border: 4px solid ${({ theme }) => theme.colours.greys.grey2};
 `
 
 export {
