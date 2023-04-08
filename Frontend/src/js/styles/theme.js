@@ -2,6 +2,7 @@ const blues = {
   light_blue: '#31325D',
   dark_blue: '#232635',
   medium_blue: '#3C3D62',
+  medium_dark_blue: '#2A2A45'
 };
 
 const yellows = {

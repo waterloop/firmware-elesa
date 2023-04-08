@@ -45,7 +45,7 @@ const Header = styled.div`
   justify-content: space-between;
   width: 43%;
 
-  h3 {
+  h1 {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 300;
@@ -339,9 +339,9 @@ export default function RemoteFlashing() {
       </Nav>
       <Container>
         <Header>
-          <h3>
+          <h1>
             Remote Flashing
-          </h3>
+          </h1>
           <ButtonYellow height='56px' onClick={scanForDevices}>
             Scan For Devices
           </ButtonYellow>

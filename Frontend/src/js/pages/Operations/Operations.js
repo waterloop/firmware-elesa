@@ -19,6 +19,7 @@ const Nav = styled.div`
   align-items: center;
   font-size: 20px;
   p {padding-left: 18px}
+  background: linear-gradient(180deg, #232635 0%, #31325D 100%);
 `;
 
 const StatusBar = styled.div`

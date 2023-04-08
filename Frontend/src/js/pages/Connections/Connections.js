@@ -3,8 +3,27 @@ import styled from 'styled-components';
 import { ButtonDarkGrey, ButtonLightGrey, ButtonYellow } from '../../components/Buttons';
 import { ProgressBar, ProgressBarLogo } from '../../components/ProgressBar';
 import ScrollBar from '../../components/ScrollBar';
-import Modal from 'styled-react-modal'
+import Modal from 'styled-react-modal';
 import ExitIcon from '@img/svg/exit.svg';
+import StatusIconConnected from '@img/svg/icons/icon_status_bar_connected.svg';
+
+const Nav = styled.div`
+  background: linear-gradient(180deg, #232635 0%, #31325D 100%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 20px;
+  padding-left: 80px;
+  margin-left: -50px;
+`;
+
+const NavContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 18px;
+`;
 
 const ConnectionsContainer = styled.div`
   display: flex;
@@ -24,6 +43,14 @@ const HeadingContainer = styled.div`
   padding-bottom: 1rem;
   padding-right: 80px;
   width: 75%;
+
+  h1 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 56px;
+  }
 `;
 
 const HeadingButtonContainer = styled.div`
@@ -116,6 +143,12 @@ export default function Connections() {
 
   return (
     <ConnectionsContainer>
+      <Nav>
+        <NavContent>
+          <StatusIconConnected/>
+          <p>Connected</p>
+        </NavContent>
+      </Nav>
       <HeadingContainer>
         <h1>Connections</h1>
         <HeadingButtonContainer>
