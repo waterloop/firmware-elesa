@@ -10,6 +10,8 @@ import ExitIconWhite from '@img/svg/exit_white.svg';
 import StatusIconConnected from '@img/svg/icons/icon_status_bar_connected.svg';
 import StatusIconDisconnected from '@img/svg/icons/icon_status_bar_disconnected.svg';
 import ProgressBarLogo from '@img/svg/icons/icon_operations_progressbar.svg';
+import ErrorIcon from '@img/svg/icons/icon_error.svg';
+import WarningIcon from '@img/svg/icons/icon_warning.svg';
 
 const Container = styled.div`
   display: flex;
@@ -74,38 +76,6 @@ const Content = styled(ScrollBar)`
   display: flex;
   overflow-y: scroll;
 `;
-
-const loadingModalStyle = {
-  overlay: {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)'
-  },
-  content: {
-    background: theme.colours.blues.dark_blue,
-    width: '552px',
-    height: '355px',
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
-
-const deviceInfoModalStyle = {
-  overlay: {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)'
-  },
-  content: {
-    width: '840px',
-    height: '582px',
-    padding: '40px',
-    paddingLeft: '65px',
-    background: theme.colours.blues.dark_blue,
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
 
 const CenteredModalContent = styled.div`
   display: flex;
@@ -236,7 +206,128 @@ const DeviceInfoRowText = styled.div`
   letter-spacing: 0.02em;
 `
 
-function CustomModal(props) {
+const loadingModalStyle = {
+  overlay: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)'
+  },
+  content: {
+    background: theme.colours.blues.dark_blue,
+    width: '552px',
+    height: '355px',
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+const deviceInfoModalStyle = {
+  overlay: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)'
+  },
+  content: {
+    width: '840px',
+    height: '582px',
+    padding: '40px',
+    paddingLeft: '65px',
+    background: theme.colours.blues.dark_blue,
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+const warningModalStyle = {
+  overlay: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)'
+  },
+  content: {
+    background: theme.colours.blues.dark_blue,
+    width: '552px',
+    height: '355px',
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
+    color: 'white',
+  },
+};
+
+const errorModalStyle = {
+  overlay: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)'
+  },
+  content: {
+    background: theme.colours.blues.dark_blue,
+    width: '552px',
+    height: '355px',
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
+    color: 'white',
+  },
+};
+
+const WarningModalBody = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const WarningModalHeader = styled.div`
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+  height: 40px;
+`
+
+const WarningModalTitle = styled.h1`
+  font-family: Roboto;
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #FED138;
+`
+
+const ModalErrorCode = styled.div`
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-align: center;
+  align-self: center;
+  margin-bottom: 25px;
+`
+
+const ModalText = styled.div`
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-align: center;
+  align-self: center;
+  margin-bottom: 20px;  
+`
+
+const ModalLink = styled.a`
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  align-self: center;
+  margin-bottom: 35px;
+  color: white;
+`
+
+function LoadingModal(props) {
   return (
     <Modal
       isOpen={props.isOpen}
@@ -271,6 +362,109 @@ function CustomModal(props) {
   )
 }
 
+function WarningModal(props) {
+  return (
+    <Modal
+      isOpen={props.isOpen}
+      onAfterOpen={props.onAfterOpen}
+      onRequestClose={props.onRequestClose}
+      style={props.style}
+      contentLabel="Example Modal"
+    >
+      <CenteredModalContent>
+        <ModalHeader>
+          <button onClick={() => {console.log("1"); props.onRequestClose()}} style={{backgroundColor:"transparent", border: "none", cursor: "pointer"}}>
+            <ExitIconWhite/>
+          </button>
+        </ModalHeader>
+        <WarningModalBody>
+
+          <WarningModalHeader>
+            <WarningIcon/>
+            <WarningModalTitle>
+              Warning
+            </WarningModalTitle>
+          </WarningModalHeader>
+
+          <ModalErrorCode>
+            ERROR CODE: 21
+          </ModalErrorCode>
+
+          <ModalText>
+            Contact the Software Communications<br/>
+            team on Slack for more information.
+          </ModalText>
+
+          <ModalLink href="https://waterloop.slack.com/archives/CNQJHS0G1">
+            #SW_COMMUNICATIONS_TEAM
+          </ModalLink>
+
+          <ButtonLightGrey
+            onClick = {() => setShowWarningModal(false)}
+            fontSize = "16px"
+            width = "120px"
+            style = {{"alignSelf": "center"}}
+          >
+            DISMISS
+          </ButtonLightGrey>
+
+        </WarningModalBody>
+      </CenteredModalContent>
+    </Modal>
+  )
+}
+
+function ErrorModal(props) {
+  return (
+    <Modal
+      isOpen={props.isOpen}
+      onAfterOpen={props.onAfterOpen}
+      onRequestClose={props.onRequestClose}
+      style={props.style}
+      contentLabel="Example Modal"
+    >
+      <CenteredModalContent>
+        <ModalHeader>
+          <button onClick={() => {console.log("1"); props.onRequestClose()}} style={{backgroundColor:"transparent", border: "none", cursor: "pointer"}}>
+            <ExitIconWhite/>
+          </button>
+        </ModalHeader>
+        <ModalBody>
+
+          <WarningModalHeader>
+            <ErrorIcon/>
+            <WarningModalTitle style={{"color": "#FF4141"}}>
+            Action failed.
+            </WarningModalTitle>
+          </WarningModalHeader>
+
+          <ModalErrorCode>
+            ERROR CODE: 21
+          </ModalErrorCode>
+
+          <ModalText>
+            Contact the Software Communications<br/>
+            team on Slack for more information.
+          </ModalText>
+
+          <ModalLink href="https://waterloop.slack.com/archives/CNQJHS0G1">
+            #SW_COMMUNICATIONS_TEAM
+          </ModalLink>
+
+          <ButtonLightGrey
+            onClick = {() => setShowErrorModal(false)}
+            fontSize = "16px"
+            width = "120px"
+            style = {{"alignSelf": "center"}}
+          >
+            DISMISS
+          </ButtonLightGrey>
+        </ModalBody>
+      </CenteredModalContent>
+    </Modal>
+  )
+}
+
 export default function RemoteFlashing() {
   const [connectionStatus, setConnectionStatus] = useState({
     connected: 
@@ -284,6 +478,8 @@ export default function RemoteFlashing() {
   const [isSavingDetails, setSavingDetails] = React.useState(false);
   const [showDevices, setShowDevices] = React.useState(false);
   const [showDeviceDetails, setShowDeviceDetails] = React.useState(false);
+  const [showWarningModal, setShowWarningModal] = React.useState(false);
+  const [showErrorModal, setShowErrorModal] = React.useState(false);
 
   // const [devices, setDevices] = React.useState(["Device 1", "Device 2", "Device 3", "Device 4"]);
   const devices = ["Device 1", "Device 2", "Device 3", "Device 4"]
@@ -335,6 +531,16 @@ export default function RemoteFlashing() {
         <NavContent>
           <connectionStatus.connected.logo />
           <p>{connectionStatus.connected.text}</p>
+
+          <button
+            style={{"backgroundColor": "transparent", "border": "none", "color": "white"}}
+            onClick={() => setShowWarningModal(true)}
+          > Warning </button>
+
+          <button
+            style={{"backgroundColor": "transparent", "border": "none", "color": "white"}}
+            onClick={() => setShowErrorModal(true)}
+          > Error </button>
         </NavContent>
       </Nav>
       <Container>
@@ -348,7 +554,21 @@ export default function RemoteFlashing() {
         </Header>
 
 
-        <CustomModal
+        <WarningModal
+          isOpen={showWarningModal}
+          onAfterOpen={() => {console.log("warning")}}
+          onRequestClose={() => {setShowWarningModal(false)}}
+          style={warningModalStyle}
+        />
+
+        <ErrorModal
+          isOpen={showErrorModal}
+          onAfterOpen={() => {console.log("error")}}
+          onRequestClose={() => {setShowErrorModal(false)}}
+          style={errorModalStyle}
+        />
+
+        <LoadingModal
           isOpen={isScanning}
           onAfterOpen={whileScanning}
           onRequestClose={finishedScanning}
@@ -356,7 +576,7 @@ export default function RemoteFlashing() {
           title={"Scanning..."}
         />
 
-        <CustomModal
+        <LoadingModal
           isOpen={isScanningDevice}
           onAfterOpen={whileScanningDevice}
           onRequestClose={finishedScanningDevice}
@@ -364,7 +584,7 @@ export default function RemoteFlashing() {
           title={"Scanning..."}
         />
 
-        <CustomModal
+        <LoadingModal
           isOpen={isSavingDetails}
           onAfterOpen={() => {}}  // TODO
           onRequestClose={() => {setSavingDetails(false)}}
