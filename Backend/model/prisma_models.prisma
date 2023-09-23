@@ -1,0 +1,17 @@
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql:xanduh"
+}
+
+model BMS_Data {
+    id    Int     @id @default(autoincrement())
+    datetime  String 
+    temperature String[]
+    voltage String[]
+    pack1_current String
+    pack2_current String
+    pack1_voltage String
+    pack2_voltage String
+  }
+
+
