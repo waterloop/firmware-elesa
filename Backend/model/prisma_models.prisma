@@ -3,15 +3,40 @@ datasource db {
   url      = "postgresql:xanduh"
 }
 
-model BMS_Data {
-    id    Int     @id @default(autoincrement())
-    datetime  String 
-    temperature String[]
-    voltage String[]
-    pack1_current String
-    pack2_current String
-    pack1_voltage String
-    pack2_voltage String
-  }
+model BMS_Data_Message {
+  id                  Int       @id @default(autoincrement())
+  timestamp           String
+  voltage             Float
+  current             Float
+  battery_temperature Short[]
+  error_message       String
+}
 
+model LIM_Data_Message {
+  id              Int       @id @default(autoincrement())
+  timestamp       String
+  lim_temperature Float[]   
+}
 
+model IMU_Data_Message {
+  id            Int     @id @default(autoincrement())
+  timestamp     String
+  imu_data      Float
+}
+
+model Pressure_Sensor_Message {
+  id                       Int     @id @default(autoincrement())
+  timestamp                String
+  pressure_sensor_data     Float
+}
+
+model State_Update_Message {
+  id        Int     @id @default(autoincrement())
+  timestamp String
+  state     String
+}
+model Catch_All_Error_Message {
+  id        Int     @id @default(autoincrement())
+  timestamp String
+  errors    String
+}
