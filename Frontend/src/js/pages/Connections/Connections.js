@@ -106,6 +106,9 @@ const ConnectionModalInputGroup = styled.div`
     margin-right: 1rem;
   }
 `
+
+// APITODO: Set up API Connection here to outline the available IP Addresses to connect to. 
+// The data to be displayed at this API endpoint are the IP Addresses to connect to. 
 const ConnectionCard = ({ connectionName, ipAddress}) => {
   return (
     <ConnectionCardContainer>
@@ -131,6 +134,7 @@ export default function Connections() {
     setIsOpen(!modalIsOpen);
   }
 
+  // #1 Specifically here for the IP Addresses
   const [connections, setConnections] = useState([
     { connectionName: "Test1", ipAddress: "123.456.678"},
     { connectionName: "Test2", ipAddress: "123.456.673"},
@@ -145,6 +149,7 @@ export default function Connections() {
     <ConnectionsContainer>
       <Nav>
         <NavContent>
+        {/* APITODO: Use the API connection to determine whether the Pod is connected or not and alter display based on that. */}
           <StatusIconConnected/>
           <p>Connected</p>
         </NavContent>
@@ -169,6 +174,7 @@ export default function Connections() {
         isOpen={modalIsOpen} 
         onBackgroundClick={toggleModal}
       >
+        {/* TODO: Some type of database to store all the stored IP Connections */}
         <ConnectionModalContainer>
           <div style={{display: "flex", alignItems: "center", marginBottom: "1.5rem"}}>
             <h2 style={{ margin: "0px" , fontSize: "2rem"}}>Connect New Device</h2>
