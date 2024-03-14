@@ -71,6 +71,9 @@ const StatisticsSection = styled.div`
   }
 `;
 
+// APITODO: Set up an API endpoint/connection
+// The data to be retrieved is the current state of Loop pod
+// This data will be used to move the positioning of the loop image on the path
 export default function Operations() {
   const [stages, setStages] = useState([
     {name: "Resting", on: false}, 
@@ -84,6 +87,8 @@ export default function Operations() {
     disconnected:
     {text: "DISCONNECTED", logo: StatusIconDisconnected}
   });
+  // APITODO: An API connection to establish the live values of the below features
+  // The data to be displayed at this endpoint are the live values
   const [podStatistics, setPodStatistics] = useState([
     {title: "Battery Pack Voltage", number: 0}, 
     {title: "Motor Voltage", number: 0}, 
