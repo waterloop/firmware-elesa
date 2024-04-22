@@ -530,7 +530,9 @@ export default function RemoteFlashing() {
       <Nav>
         <NavContent>
           <connectionStatus.connected.logo />
-          <p>{connectionStatus.connected.text}</p>
+          {/* APITODO: Set up a connection to determine whether the Pod is connected to the app or not. 
+          Then display the corresponding connected or disconnected symbol. */}
+          <p>{connectionStatus.connected.text}</p>  
 
           <button
             style={{"backgroundColor": "transparent", "border": "none", "color": "white"}}
@@ -598,6 +600,8 @@ export default function RemoteFlashing() {
           style={deviceInfoModalStyle}
           contentLabel="Device Details"
         >
+          {/* APITODO: Set up an API Connection/Endpoint to obtain the required data values,such as IDs, type, version etc,
+          and display the correct values on the Modal */}
           <ModalContent>
             <DeviceInfoTitle>
               Device X
